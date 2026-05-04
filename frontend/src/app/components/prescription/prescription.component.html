@@ -1,0 +1,48 @@
+<div class="container mt-3">
+  <h2 class="text-success border-bottom pb-2">📋 Digital Prescription Case</h2>
+
+  <div class="row mt-3 shadow-sm p-4 bg-white rounded">
+    <div class="col-md-6 mb-3">
+      <label class="form-label fw-bold">Select Patient</label>
+      <select class="form-select">
+        <option>Sabita Pandey (ID: 101)</option>
+        <option>Riya Singh (ID: 102)</option>
+      </select>
+    </div>
+
+    <div class="col-md-12 mb-3">
+      <label class="form-label fw-bold">Diagnosis / Disease</label>
+      <input type="text" class="form-control" placeholder="e.g. Viral Fever">
+    </div>
+
+    <div class="col-12 mb-3">
+      <label class="form-label fw-bold">Medicines & Dosage</label>
+      <table class="table table-bordered">
+        <thead class="table-light">
+        <tr>
+          <th>Medicine Name</th>
+          <th>Dosage (Morning-Afternoon-Night)</th>
+          <th>Duration</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><input type="text" class="form-control form-control-sm" placeholder="Paracetamol"></td>
+          <td><input type="text" class="form-control form-control-sm" placeholder="1-0-1"></td>
+          <td><input type="text" class="form-control form-control-sm" placeholder="5 Days"></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-12 mb-3">
+      <label class="form-label fw-bold">Doctor's Advice</label>
+      <textarea class="form-control" rows="2" placeholder="Rest for 2 days, drink more water."></textarea>
+    </div>
+
+    <div class="col-12 text-center">
+      <button class="btn btn-success px-5">Submit Prescription</button>
+      <button class="btn btn-outline-dark ms-2">🖨️ Print PDF</button>
+    </div>
+  </div>
+</div>

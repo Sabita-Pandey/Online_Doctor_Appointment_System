@@ -1,0 +1,172 @@
+.home-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.hero {
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    color: white;
+    padding: 50px 20px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.section-title {
+    margin-bottom: 20px;
+    color: #333;
+    border-left: 5px solid #007bff;
+    padding-left: 15px;
+}
+
+/* Doctor Card Styling */
+.doctor-list {
+    display: flex;
+    flex-direction: column; /* Vertical Scroll ke liye */
+    gap: 20px;
+}
+
+.doctor-card {
+    display: flex;
+    background: white;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    align-items: center;
+}
+
+.doctor-card:hover {
+    transform: scale(1.02); /* Hover karne par halka bada hoga */
+}
+
+.doc-image {
+    font-size: 50px;
+    color: #007bff;
+    margin-right: 20px;
+}
+
+.doc-info h3 {
+    margin: 0;
+    color: #0056b3;
+}
+
+.book-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.book-btn:hover {
+    background-color: #218838;
+}
+
+.specialty-grid {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin: 30px 0;
+}
+.specialty-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  width: 200px;
+  transition: transform 0.3s;
+}
+.specialty-card:hover {
+  transform: translateY(-5px);
+}
+
+.hero-section {
+  background: #f0f4ff;
+  padding: 80px 0;
+  .hero-content { display: flex; align-items: center; justify-content: space-between; }
+  .hero-text { flex: 1; h1 { font-size: 3rem; font-weight: 800; } }
+  .hero-image img { width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+}
+
+.search-box {
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  margin: 30px 0;
+  input { border: none; outline: none; width: 70%; padding: 10px; }
+  .search-btn { background: #000; color: white; border-radius: 5px; padding: 10px 25px; }
+}
+
+.doctor-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.doc-card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  .doc-img-container img { width: 100%; height: 250px; object-fit: cover; }
+  .doc-details { padding: 20px; text-align: center; }
+}
+
+.get-started-banner {
+  background: #050a18;
+  color: white;
+  padding: 60px;
+  text-align: center;
+  margin-top: 80px;
+}
+.home-container {
+  overflow-x: hidden;
+}
+
+.animate-up {
+  transition: transform 0.3s ease;
+  &:hover { transform: translateY(-10px); }
+}
+
+.specialty-card {
+  transition: all 0.3s ease;
+  border-radius: 20px;
+  cursor: pointer;
+  &:hover {
+    background: #2196f3;
+    color: white;
+    transform: translateY(-5px);
+    .icon-circle { color: white !important; }
+  }
+}
+
+.doc-img-wrapper {
+  height: 250px;
+  overflow: hidden;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+}
+
+.doctor-card:hover img {
+  transform: scale(1.1);
+}
+
+.stat-box h3 {
+  color: #2196f3;
+}
+
+.btn-primary {
+  background-color: #2196f3;
+  border: none;
+  &:hover { background-color: #1976d2; }
+}

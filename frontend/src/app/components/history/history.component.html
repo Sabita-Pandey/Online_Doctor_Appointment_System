@@ -1,0 +1,117 @@
+<div class="container mt-4">
+  <h2 class="fw-bold mb-4 text-primary">📜 Medical & Feedback History</h2>
+
+  <div class="row mb-3">
+    <div class="col-md-4">
+      <div class="input-group shadow-sm">
+        <span class="input-group-text bg-white border-end-0">🔍</span>
+        <input type="text" class="form-control border-start-0" placeholder="Search by Doctor Name..." [(ngModel)]="searchText">
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card shadow-sm border-0 rounded-4 p-3 mb-4">
+        <h5 class="fw-bold border-bottom pb-2 mb-3">Visit History</h5>
+        <div class="table-responsive">
+          <table class="table table-hover align-middle">
+            <thead class="bg-light">
+            <tr>
+              <th>Date</th>
+              <th>Doctor</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of filteredHistory()">
+              <td>{{ item.appointmentDate }}</td>
+              <td><span class="fw-bold">{{ item.doctorName || 'Not Assigned' }}</span></td>
+              <td>
+                  <span [class]="item.status === 'Completed' ? 'badge bg-success' : 'badge bg-secondary'">
+                    {{ item.status }}
+                  </span>
+              </td>
+              <td>
+                <button *ngIf="item.status === 'Completed' || item.status === 'Confirmed'"
+                        class="btn btn-sm btn-warning fw-bold rounded-pill shadow-sm"
+                        (click)="openRateModal(item)">
+                  ⭐ Rate Doctor
+                </button>
+
+                <span *ngIf="item.status === 'Cancelled' || item.status === 'Pending'"
+                      class="text-muted small">
+    N/A
+  </span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card shadow-sm border-0 rounded-4 p-3 bg-white" style="min-height: 300px;">
+        <h5 class="fw-bold border-bottom pb-2 mb-3">Your Reviews</h5>
+
+        <div *ngIf="reviews.length === 0" class="text-center text-muted mt-5">
+          <p>No reviews given yet.</p>
+        </div>
+
+        <div class="review-list" *ngFor="let rev of reviews">
+          <div class="mb-3 p-3 border rounded-3 bg-light shadow-sm">
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-bold text-dark">{{ rev.doctorName }}</span>
+              <span class="text-warning small">
+                <span *ngFor="let s of [1,2,3,4,5]">
+                  {{ s <= rev.rating ? '⭐' : '' }}
+                </span>
+              </span>
+            </div>
+            <p class="small text-muted mb-1 mt-2">"{{ rev.comment }}"</p>
+            <hr class="my-1">
+            <small class="text-secondary" style="font-size: 0.7rem;">{{ rev.date }}</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" [ngClass]="{'show d-block': isModalOpen}" tabindex="-1" *ngIf="isModalOpen" style="background: rgba(0,0,0,0.6);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-0 rounded-4 shadow-lg">
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">Share Your Experience</h5>
+        <button type="button" class="btn-close btn-close-white" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body p-4 text-center">
+        <p class="mb-1">How was your consultation with</p>
+        <h5 class="fw-bold text-primary mb-4">{{ selectedAppt?.doctorName }}</h5>
+
+        <div class="mb-4">
+          <label class="d-block mb-2 fw-semibold">Give a Rating</label>
+          <div class="display-5">
+            <span *ngFor="let star of [1,2,3,4,5]"
+                  (click)="reviewObj.rating = star"
+                  class="star-btn px-1"
+                  [class.text-warning]="star <= reviewObj.rating"
+                  [class.text-muted]="star > reviewObj.rating"
+                  style="cursor: pointer; transition: 0.2s;">★</span>
+          </div>
+        </div>
+
+        <div class="text-start mb-3">
+          <label class="form-label fw-semibold">Your Review</label>
+          <textarea class="form-control rounded-3" [(ngModel)]="reviewObj.comment" rows="3" placeholder="What did you like or what can be improved?"></textarea>
+        </div>
+      </div>
+      <div class="modal-footer border-0 px-4 pb-4">
+        <button type="button" class="btn btn-light px-4 rounded-pill" (click)="closeModal()">Later</button>
+        <button type="button" class="btn btn-primary px-4 rounded-pill fw-bold" (click)="submitReview()">Submit Review</button>
+      </div>
+    </div>
+  </div>
+</div>

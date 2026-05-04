@@ -1,0 +1,84 @@
+<div class="container mt-4">
+  <div class="card shadow border-0 rounded-4 p-4 bg-light">
+    <h2 class="text-center text-primary mb-4 fw-bold">🏥 Book New Appointment</h2>
+
+    <form (ngSubmit)="onSave()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Full Name</label>
+          <input type="text" class="form-control" [(ngModel)]="bookingObj.patientName" name="pName" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Doctor</label>
+          <select class="form-select" [(ngModel)]="bookingObj.doctorName" (change)="onDoctorChange($event)" name="doctorName">
+            <option value="" disabled selected>Select Doctor</option>
+            <option *ngFor="let doc of doctorList" [value]="doc.name">
+              {{ doc.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label class="fw-bold">Specialization</label>
+          <input type="text" [value]="selectedDoctorDetails?.specialization" class="form-control bg-light" readonly placeholder="Auto-filled">
+        </div>
+
+        <div class="col-md-3 mb-3">
+          <label class="fw-bold">Department</label>
+          <input type="text" [(ngModel)]="bookingObj.department" name="dept" class="form-control bg-light" readonly placeholder="Auto-filled">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Date</label>
+          <input type="date" class="form-control" [(ngModel)]="bookingObj.appointmentDate" name="aDate" required>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Time Slot</label>
+          <select class="form-select" [(ngModel)]="bookingObj.timeSlot" name="tSlot">
+            <option value="" disabled>Select Slot</option>
+            <option>10:00 AM - 11:00 AM</option>
+            <option>05:00 PM - 06:00 PM</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Consultation Mode</label>
+          <select class="form-select" [(ngModel)]="bookingObj.locationType" name="loc">
+            <option value="Offline">Offline (Visit)</option>
+            <option value="Online">Online (Video)</option>
+          </select>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Consultation Fees</label>
+          <input type="text" class="form-control bg-white" [(ngModel)]="bookingObj.feesAmount" name="fees" readonly>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label class="fw-bold text-danger">Allergies (If any)</label>
+          <textarea class="form-control" [(ngModel)]="bookingObj.allergies" name="allergy" rows="2" placeholder="Describe allergies..."></textarea>
+        </div>
+
+        <div class="col-md-12 mb-3">
+          <label class="fw-bold">Payment Method</label>
+          <select class="form-select" [(ngModel)]="bookingObj.paymentMethod" name="pay">
+            <option value="Cash">Cash</option>
+            <option value="UPI">UPI / GPay</option>
+            <option value="Card">Card</option>
+          </select>
+        </div>
+      </div> <div class="d-flex justify-content-between align-items-center mt-4">
+      <button type="button" (click)="goBack()" class="btn btn-secondary">
+        ⬅️ Back
+      </button>
+
+      <button type="submit" class="btn btn-primary px-5 py-2 rounded-pill fw-bold shadow">
+        🚀 Confirm & Book Now
+      </button>
+    </div>
+
+    </form>
+  </div>
+</div>

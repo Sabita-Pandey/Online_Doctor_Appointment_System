@@ -1,0 +1,17 @@
+<div class="container mt-4">
+  <h4>Book New Appointment</h4>
+  <form #appoForm="ngForm" (ngSubmit)="book(appoForm.value)">
+    <div class="mb-3">
+      <label>Select Date</label>
+      <input type="date" name="preferredDate" ngModel class="form-control">
+    </div>
+    <div class="mb-3">
+      <label>Time Slot</label>
+      <select name="preferredTime" ngModel class="form-select">
+        <option value="10:00 AM">10:00 AM</option>
+        <option value="02:00 PM">02:00 PM</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Request Appointment</button>
+  </form>
+</div>

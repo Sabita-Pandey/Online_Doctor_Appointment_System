@@ -1,0 +1,51 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow-lg p-4" style="width: 450px; border-radius: 15px; border: none;">
+    <div class="text-center mb-4">
+      <h2 class="fw-bold" style="color: #2c3e50;">Create Account</h2>
+      <p class="text-muted small">Join our Doctor Appointment System</p>
+    </div>
+
+    <form #regForm="ngForm" (ngSubmit)="onRegister(regForm.value)">
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Full Name</label>
+        <input type="text" name="name" ngModel class="form-control p-2 bg-light"
+               placeholder="Enter your name" required #name="ngModel">
+        <div *ngIf="name.invalid && name.touched" class="text-danger small">Name is required.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Email Address</label>
+        <input type="email" name="email" ngModel class="form-control p-2 bg-light"
+               placeholder="name@example.com" required email #email="ngModel">
+        <div *ngIf="email.invalid && email.touched" class="text-danger small">Please enter a valid email.</div>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Password</label>
+        <input type="password" name="password" ngModel class="form-control p-2 bg-light"
+               placeholder="Min 6 characters" required minlength="6" #pass="ngModel">
+        <div *ngIf="pass.invalid && pass.touched" class="text-danger small">Password must be at least 6 chars.</div>
+      </div>
+
+      <div class="mb-4">
+        <label class="form-label small fw-bold">Register As</label>
+        <select name="role" ngModel class="form-select p-2 bg-light" required>
+          <option value="" disabled selected>Select Role</option>
+          <option value="Patient">Patient</option>
+          <option value="Doctor">Doctor</option>
+          <option value="Manager">Manager</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="regForm.invalid" class="btn btn-primary w-100 p-2 fw-bold shadow-sm"
+              style="background-color: #3498db; border: none;">
+        Register Now
+      </button>
+
+      <div class="text-center mt-3">
+        <span class="small text-muted">Already have an account? </span>
+        <a routerLink="/" class="text-decoration-none small fw-bold" style="color: #3498db;">Login here</a>
+      </div>
+    </form>
+  </div>
+</div>

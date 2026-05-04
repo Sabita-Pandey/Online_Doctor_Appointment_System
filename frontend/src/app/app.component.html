@@ -1,0 +1,67 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm py-2">
+  <div class="container-fluid">
+
+    <div class="dropdown d-inline-block">
+      <button class="btn btn-link text-white text-decoration-none dropdown-toggle d-flex align-items-center"
+              type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false"
+              style="border: none; box-shadow: none;">
+        <div class="rounded-circle bg-secondary d-flex align-items-center justify-content-center me-2"
+             style="width: 35px; height: 35px; border: 1px solid white;">
+          <i class="fa fa-user text-white"></i>
+        </div>
+        <span class="fw-bold">My Profile</span>
+      </button>
+
+      <ul class="dropdown-menu dropdown-menu-dark shadow-lg mt-2">
+        <li><a class="dropdown-item" routerLink="profile"><i class="fa fa-user-circle me-2"></i> View Profile</a></li>
+        <li> <a class="dropdown-item" routerLink="/about-us">
+          <i class="fa fa-info-circle"> About Us </i>
+        </a> </li>
+        <li><a class="dropdown-item" href="#"><i class="fa fa-lock me-2"></i> Change Password</a></li>
+        <li><a class="dropdown-item" (click)="addAccount()" >
+          <i class="fa fa-user-plus"> </i></a> </li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item text-danger fw-bold" (click)="onLogout()"><i class="fa fa-sign-out me-2"></i> Logout</a></li>
+      </ul>
+    </div>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item mx-2">
+          <a class="nav-link" routerLink = "/home" routerLinkActive="active">Home</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link small text-white" routerLink="patient-form" routerLinkActive="active-link">Patient Details</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link small text-white" routerLink="doctor-form" routerLinkActive="active-link">Doctor Details</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link small text-white" routerLink="booking" routerLinkActive="active-link">Booking</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link small text-white" routerLink="doctor-appointments" routerLinkActive="active-link">Booked</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link small text-white" routerLink="history" routerLinkActive="active-link">History</a>
+        </li>
+        <li class="nav-item mx-2">
+          <a class="nav-link small text-white" routerLink="prescription" routerLinkActive="active-link">📄 Prescription</a>
+        </li>
+        <li class="nav-item mx-2">
+          <button class="btn btn-danger btn-sm px-3" (click)="onLogout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+</nav>
+
+<div class="container-fluid mt-3">
+  <router-outlet></router-outlet>
+</div>

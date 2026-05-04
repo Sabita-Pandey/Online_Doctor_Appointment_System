@@ -1,0 +1,67 @@
+<div class="container mt-3">
+  <h2 class="text-primary border-bottom pb-2">🩺 Patient Information Form</h2>
+
+  <form class="row g-3 mt-2 shadow-sm p-4 bg-white rounded">
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Aadhaar Number</label>
+      <input type="text" class="form-control" placeholder="12-digit Aadhaar No">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label fw-bold">Age</label>
+      <input type="number" class="form-control" placeholder="Age">
+    </div>
+
+    <div class="col-md-3">
+      <label class="form-label fw-bold">Gender</label>
+      <select class="form-select">
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Blood Group</label>
+      <select class="form-select">
+        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+        <option>O+</option><option>O-</option><option>AB+</option><option>AB-</option>
+      </select>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Emergency Contact</label>
+      <input type="text" class="form-control" placeholder="Phone Number">
+    </div>
+
+    <div class="col-12">
+      <label class="form-label fw-bold">Address</label>
+      <textarea class="form-control" rows="2" placeholder="Full Address"></textarea>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Current Symptoms</label>
+      <textarea class="form-control" rows="3" placeholder="Fever, Cough, etc."></textarea>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label fw-bold">Major Medical Issue</label>
+      <textarea class="form-control" rows="3" placeholder="Diabetes, BP, etc."></textarea>
+    </div>
+
+    <div class="col-12">
+      <label class="form-label fw-bold">Previous History</label>
+      <textarea class="form-control" rows="2" placeholder="Any past surgeries or allergies"></textarea>
+    </div>
+
+    <div class="mt-4 d-flex justify-content-center gap-3">
+      <button type="button" class="btn btn-secondary px-4 shadow-sm" (click)="goBackHome()">
+        <i class="fa fa-arrow-left me-2"></i> Back
+      </button>
+
+      <button type="button" class="btn btn-primary px-4 shadow-sm" (click)="saveAndNext()">
+        Save & Next <i class="fa fa-arrow-right ms-2"></i>
+      </button>
+    </div>
+  </form>
+</div>

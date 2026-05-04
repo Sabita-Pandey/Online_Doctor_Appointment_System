@@ -1,0 +1,45 @@
+.main-wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  height: 60px;
+  z-index: 1000;
+}
+
+.dashboard-bg {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: calc(100vh - 60px);
+
+  /* Naya Doctor Background */
+  background-image: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),
+                    url('https://img.freepik.com/free-photo/blur-hospital_1203-7956.jpg');
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.main-card {
+  background: rgba(255, 255, 255, 0.9); /* Transparent white look */
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.nav-link {
+  font-weight: 500;
+  transition: 0.3s;
+  &:hover {
+    color: #3498db !important;
+    text-decoration: underline;
+  }
+}
+
+.active-link {
+  color: #ffc107 !important; /* Yellow color jab page active ho */
+  font-weight: bold;
+  border-bottom: 2px solid #ffc107;
+}

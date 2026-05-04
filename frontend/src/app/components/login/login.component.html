@@ -1,0 +1,33 @@
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="width: 400px; border-radius: 15px;">
+    <h2 class="text-center fw-bold mb-4" style="color: #2c3e50;">Doctor Appointment - Login</h2>
+    <p class="text-center text-muted">Please login to your account</p>
+
+    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+      <div class="mb-3">
+        <input type="email" name="email" ngModel class="form-control p-3 bg-light" placeholder="Email Address" required>
+      </div>
+
+      <div class="mb-3">
+        <input type="password" name="password" ngModel class="form-control p-3 bg-light" placeholder="Password" required>
+      </div>
+
+      <div class="text-end mb-3">
+        <a href="#" class="text-decoration-none small fw-bold">Forget Password?</a>
+      </div>
+
+      <button type="submit" (click)="onSubmit()" class="btn btn-primary w-100">
+        Login
+      </button>
+
+      <p class="text-center small text-muted">New user? <a routerLink="/register" style="cursor: pointer; font-weight: bold; color: #007bff; text-decoration: none;">
+        Register here
+      </a>
+      </p>
+
+      <button routerLink="/home" class="btn btn-outline-primary w-100 mt-2">
+        Add New User/Patient
+      </button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="container mt-4">
+  <div class="card shadow border-0 rounded-4 p-4 bg-light">
+    <h2 class="text-primary mb-4 fw-bold text-center">🧑‍⚕️ Doctor Professional Profile</h2>
+
+    <form>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Doctor Full Name</label>
+          <input type="text" [(ngModel)]="doctorObj.name" name="name" class="form-control" placeholder="e.g. Dr. Satish Sharma">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">License Number (MCI/State)</label>
+          <input type="text" [(ngModel)]="doctorObj.licenseNumber" name="licenseNumber" class="form-control" placeholder="e.g. MCI-12345">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Specialization</label>
+          <input type="text" [(ngModel)]="doctorObj.specialization" name="specialization" class="form-control" placeholder="e.g. Cardiologist">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Department</label>
+          <select class="form-select" [(ngModel)]="doctorObj.department" name="department">
+            <option value="OPD">OPD</option>
+            <option value="IPD">IPD</option>
+            <option value="Cardiology">Cardiology</option>
+
+            <option value="Neurology">Neurology</option>
+
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Emergency">Emergency</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Experience (Years)</label>
+          <input type="number" [(ngModel)]="doctorObj.experience" name="experience" class="form-control" placeholder="e.g. 5">
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Consultation Fee (₹)</label>
+          <input type="number" [(ngModel)]="doctorObj.consultationFee" name="consultationFee" class="form-control" placeholder="e.g. 500">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-3">
+          <label class="fw-bold">Qualification</label>
+          <input type="text" [(ngModel)]="doctorObj.qualification" name="qualification" class="form-control" placeholder="e.g. MBBS, MD (Medicine)">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 mb-4">
+          <label class="fw-bold">Availability Status</label>
+          <select class="form-select" [(ngModel)]="doctorObj.availabilityStatus" name="availabilityStatus">
+            <option value="Available">Available</option>
+            <option value="On Leave">On Leave</option>
+            <option value="Not Available">Not Available</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between">
+        <button type="button" class="btn btn-secondary px-4 py-2" (click)="goBack()">
+          ⬅️ Back
+        </button>
+        <button type="button" class="btn btn-success px-4 py-2" (click)="saveDoctorAndNext()">
+          Save & Proceed to Booking ➡️
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
