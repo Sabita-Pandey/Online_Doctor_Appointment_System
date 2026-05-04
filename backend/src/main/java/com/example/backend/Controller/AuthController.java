@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 // "*" hatakar "allowedOriginPatterns" use karein
-@CrossOrigin(originPatterns = "http://localhost:*", allowCredentials = "true", allowedHeaders = "*")
+@CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true", allowedHeaders = "*")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

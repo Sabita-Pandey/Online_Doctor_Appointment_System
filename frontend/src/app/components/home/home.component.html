@@ -1,4 +1,5 @@
 <div class="home-container">
+  <!-- Hero Section -->
   <section class="hero-section d-flex align-items-center p-5" style="background-color: #f0f4ff; min-height: 70vh;">
     <div class="container">
       <div class="row align-items-center">
@@ -37,6 +38,7 @@
     </div>
   </section>
 
+  <!-- Specialties Section -->
   <section class="py-5 text-center bg-white">
     <div class="container mt-4">
       <h2 class="fw-bold">Browse by Specialty</h2>
@@ -55,6 +57,7 @@
     </div>
   </section>
 
+  <!-- Doctors Section -->
   <section class="py-5 bg-light" *ngIf="showData">
     <div class="container">
       <h2 class="text-center fw-bold mb-4">Our Specialist Doctors</h2>
@@ -76,14 +79,18 @@
     </div>
   </section>
 
-  <section class="bg-dark text-white py-5 text-center">
-    <div class="container">
-      <h2 class="fw-bold">Ready to Get Started?</h2>
-      <p>Book your appointment today and take control of your health</p>
-      <div class="d-flex justify-content-center gap-3 mt-3">
-        <button class="btn btn-light px-4 rounded-pill" (click)="goToPatientForm()">Find a Doctor</button>
-        <button class="btn btn-outline-light px-4 rounded-pill">Learn More</button>
+  <section class="py-5 text-center" style="background-color: #f0f4ff;">
+    <div class="container py-4">
+      <h2 class="display-5 fw-bold mb-3" style="color: #2c3e50;">Ready to Get Started?</h2>
+      <p class="lead mb-4 text-muted">Book your appointment today and take control of your health</p>
+      <div class="d-flex justify-content-center gap-3 mt-2">
+        <button class="btn btn-primary px-5 py-2 rounded-pill fw-bold" (click)="goToPatientForm()">Find a Doctor</button>
+        <button class="btn btn-outline-primary px-5 py-2 rounded-pill fw-bold">Learn More</button>
       </div>
     </div>
   </section>
+
+  <!-- Final Footer Integration -->
+  <app-footer></app-footer>
+
 </div>

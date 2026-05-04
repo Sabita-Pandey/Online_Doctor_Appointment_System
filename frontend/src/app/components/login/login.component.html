@@ -3,29 +3,32 @@
     <h2 class="text-center fw-bold mb-4" style="color: #2c3e50;">Doctor Appointment - Login</h2>
     <p class="text-center text-muted">Please login to your account</p>
 
-    <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm.value)">
+    <!-- 1. Form submit hone par sirf onSubmit() call hoga -->
+    <form (ngSubmit)="onSubmit()">
       <div class="mb-3">
-        <input type="email" name="email" ngModel class="form-control p-3 bg-light" placeholder="Email Address" required>
+        <input type="email" name="email" [(ngModel)]="loginData.email" class="form-control p-3 bg-light" placeholder="Email Address" required>
       </div>
 
       <div class="mb-3">
-        <input type="password" name="password" ngModel class="form-control p-3 bg-light" placeholder="Password" required>
+        <input type="password" name="password" [(ngModel)]="loginData.password" class="form-control p-3 bg-light" placeholder="Password" required>
       </div>
 
       <div class="text-end mb-3">
         <a href="#" class="text-decoration-none small fw-bold">Forget Password?</a>
       </div>
 
-      <button type="submit" (click)="onSubmit()" class="btn btn-primary w-100">
+      <!-- 2. Button se (click) hata dein, sirf type="submit" kaafi hai -->
+      <button type="submit" class="btn btn-primary w-100 py-2 fw-bold">
         Login
       </button>
 
-      <p class="text-center small text-muted">New user? <a routerLink="/register" style="cursor: pointer; font-weight: bold; color: #007bff; text-decoration: none;">
-        Register here
-      </a>
+      <p class="text-center mt-3 small text-muted">New user?
+        <a routerLink="/register" class="text-primary fw-bold text-decoration-none">Register here</a>
       </p>
 
-      <button routerLink="/home" class="btn btn-outline-primary w-100 mt-2">
+      <!-- 3. CRITICAL: Is button se routerLink="/home" hata dein!
+           Warna koi bhi bina login kiye ispe click karke home page pe chala jayega. -->
+      <button type="button" routerLink="/register" class="btn btn-outline-primary w-100 mt-2">
         Add New User/Patient
       </button>
     </form>

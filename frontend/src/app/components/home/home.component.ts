@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { SpecialtyService } from '../../services/specialty.service'; // Path sahi check kar lena
 import { FormsModule } from '@angular/forms';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, FormsModule],
+  imports: [CommonModule, RouterLink, FormsModule, FooterComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'] // Aapka purana extension .scss tha toh wahi rehne dein
 })

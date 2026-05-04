@@ -12,39 +12,22 @@ import { RouterModule } from '@angular/router';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent {
+  loginData = { email: '', password: '' };
+
   constructor(private authService: AuthService, private router: Router) {}
- loginData = {
-   email: '',
-   password:''
-   };
-  onLogin(data: any) {
-    this.authService.login(data).subscribe({
+
+  onSubmit() {
+    this.authService.login(this.loginData).subscribe({
       next: (res: any) => {
         alert("Login Successful!");
+        // User ka data ya token save karein
         localStorage.setItem('user', JSON.stringify(res));
-        this.router.navigate(['/dashboard']);
+        // Ab user authorized hai, toh home par bhej dein
+        this.router.navigate(['/home']);
       },
-      error: (err: any) => {
-        alert("Invalid Credentials!");
+      error: (err) => {
+        alert("Invalid credentials. Please try again.");
       }
     });
   }
-
-onSubmit() {
-  this.authService.login(this.loginData).subscribe({
-    next: (response: any) => {
-      // 1. Alert dikhayega
-      alert("Login Successful!");
-
-      // 2. Direct Home page par bhej dega (Yahi line missing hogi shayad)
-      this.router.navigate(['/home']);
-
-      console.log("Navigating to dashboard...");
-    },
-    error: (err) => {
-      console.error(err);
-      alert("Invalid Credentials! Please check email/password.");
-    }
-  });
-}
 }
