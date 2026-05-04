@@ -10,9 +10,10 @@ public class WebConfig implements WebMvcConfigurer { // Direct implements karein
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("*") // Sabhi ports allow
+                .allowedOrigins("http://localhost:4200") // Sabhi ports allow
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
-                .exposedHeaders("Access-Control-Allow-Origin"); // Extra safety
+                .exposedHeaders("Access-Control-Allow-Origin")
+                .allowCredentials(true); // Extra safety
     }
 }
