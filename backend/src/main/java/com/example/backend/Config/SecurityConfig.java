@@ -36,6 +36,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Sabhi auth endpoints (/login, /register, etc.) ko allow karein
                         .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/doctors/**").permitAll()
+                        .requestMatchers("/api/patients/**").permitAll()
                         .anyRequest().authenticated()
                 );
 

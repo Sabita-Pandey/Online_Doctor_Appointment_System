@@ -40,6 +40,7 @@ public class Doctor {
     @Column(name = "consultation_fee")
     private Double consultationFee;
 
+    @Column(name = "qr_code_url", columnDefinition = "TEXT")
     private String qrCodeUrl;
 
 
