@@ -34,18 +34,18 @@ export class LoginComponent {
   // Yeh naya function "Forget Password?" link ke liye hai
   onForgotPassword() {
     if (!this.loginData.email) {
-      alert("Pehle Email box mein apni Email Address likhein!");
+      alert("Write your email address in the first email box!");
       return;
     }
 
     this.authService.forgotPassword(this.loginData.email).subscribe({
       next: (response) => {
         console.log('Email sent!', response);
-        alert('Password Reset link aapke email par bhej diya gaya hai. Apna Inbox check karein!');
+        alert('"The password reset link has been sent to your email. Please check your inbox!');
       },
       error: (err) => {
         console.error('Error!', err);
-        alert('Galti: Ya toh email registered nahi hai ya server mein problem hai.');
+        alert('Error: The email is either not registered or there is a server issue.');
       }
     });
   }
