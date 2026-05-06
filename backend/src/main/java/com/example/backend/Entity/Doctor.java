@@ -21,6 +21,8 @@ public class Doctor {
     @Column(name = "user_id")
     private Long userId;
 
+    private String contactNo;
+
     private String specialization;
 
     // Check karein ki ye Integer hi hai (String nahi)
@@ -37,4 +39,8 @@ public class Doctor {
 
     @Column(name = "consultation_fee")
     private Double consultationFee;
+
+    private String qrCodeUrl;
+
+
 }

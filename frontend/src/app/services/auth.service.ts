@@ -45,4 +45,9 @@ export class AuthService {
       localStorage.removeItem('user');
     }
   }
+forgotPassword(email: string) {
+  // Backend endpoint ka URL sahi hona chahiye
+  return this.http.post('http://localhost:8080/api/auth/forgot-password', { email });
+}
+
 }

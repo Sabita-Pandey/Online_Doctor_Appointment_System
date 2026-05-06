@@ -2,12 +2,15 @@ package com.example.backend.Controller;
 
 import com.example.backend.Entity.User;
 import com.example.backend.Repository.UserRepository;
+import com.example.backend.Service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Map;
+
 // "*" hatakar "allowedOriginPatterns" use karein
 @CrossOrigin(origins = "http://localhost:4200", allowCredentials = "true", allowedHeaders = "*")
 @RestController
@@ -15,6 +18,8 @@ import java.time.LocalDate;
 public class AuthController {
     // ... aapka code
 
+    @Autowired
+    private AuthService authService;
 
     @Autowired
     private UserRepository userRepo;
@@ -39,4 +44,11 @@ public class AuthController {
         System.out.println(savedUser);
         return ResponseEntity.ok(savedUser);
     }
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<?> forgotPassword(@RequestBody Map<String, String> request) {
+        authService.sendForgotPasswordEmail(request.get("email"));
+        return ResponseEntity.ok("Email sent successfully!");
+    }
+
 }

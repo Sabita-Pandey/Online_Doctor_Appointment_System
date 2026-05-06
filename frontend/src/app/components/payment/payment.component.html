@@ -1,0 +1,43 @@
+<div class="container mt-5">
+  <div class="card shadow-lg p-4 border-0" style="max-width: 500px; margin: auto; border-radius: 20px;">
+    <h3 class="text-center fw-bold text-primary mb-4">Secure Payment</h3>
+
+    <div class="d-flex justify-content-between mb-3 border-bottom pb-2">
+      <span class="text-muted">Patient Name:</span>
+      <span class="fw-bold">{{ patientName }}</span>
+    </div>
+    <div class="d-flex justify-content-between mb-4">
+      <span class="text-muted">Total Amount:</span>
+      <span class="fw-bold text-success">₹{{ amount }}</span>
+    </div>
+
+    <!-- UPI Form: Tab dikhega jab user ne UPI select kiya ho -->
+    <div *ngIf="paymentMode === 'UPI / GPay'">
+      <label class="form-label fw-bold">Enter UPI ID</label>
+      <div class="input-group mb-3">
+        <span class="input-group-text bg-light"><i class="bi bi-qr-code"></i></span>
+        <input type="text" class="form-control" placeholder="username@okaxis">
+      </div>
+      <button class="btn btn-primary w-100 py-2 fw-bold" (click)="completePayment()">Verify & Pay</button>
+    </div>
+
+    <!-- Card Form: Tab dikhega jab user ne Card select kiya ho -->
+    <div *ngIf="paymentMode === 'Card'">
+      <label class="form-label fw-bold">Card Details</label>
+      <input type="text" class="form-control mb-3" placeholder="Card Number (1234 XXXX XXXX)">
+      <div class="row g-2 mb-3">
+        <div class="col-6">
+          <input type="text" class="form-control" placeholder="MM/YY">
+        </div>
+        <div class="col-6">
+          <input type="password" class="form-control" placeholder="CVV">
+        </div>
+      </div>
+      <button class="btn btn-primary w-100 py-2 fw-bold" (click)="completePayment()">Pay Securely</button>
+    </div>
+
+    <div class="text-center mt-3">
+      <button class="btn btn-link text-decoration-none text-muted" (click)="cancel()">Cancel Payment</button>
+    </div>
+  </div>
+</div>

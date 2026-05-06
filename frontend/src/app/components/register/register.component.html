@@ -5,7 +5,10 @@
       <p class="text-muted small">Join our Doctor Appointment System</p>
     </div>
 
+    <!-- Pass regForm.value to the method -->
     <form #regForm="ngForm" (ngSubmit)="onRegister(regForm.value)">
+
+      <!-- Name -->
       <div class="mb-3">
         <label class="form-label small fw-bold">Full Name</label>
         <input type="text" name="name" ngModel class="form-control p-2 bg-light"
@@ -13,6 +16,7 @@
         <div *ngIf="name.invalid && name.touched" class="text-danger small">Name is required.</div>
       </div>
 
+      <!-- Email -->
       <div class="mb-3">
         <label class="form-label small fw-bold">Email Address</label>
         <input type="email" name="email" ngModel class="form-control p-2 bg-light"
@@ -20,24 +24,49 @@
         <div *ngIf="email.invalid && email.touched" class="text-danger small">Please enter a valid email.</div>
       </div>
 
+      <!-- Password -->
       <div class="mb-3">
         <label class="form-label small fw-bold">Password</label>
-        <input type="password" name="password" ngModel class="form-control p-2 bg-light"
-               placeholder="Min 6 characters" required minlength="6" #pass="ngModel">
+        <div class="input-group">
+          <input [type]="showPassword ? 'text' : 'password'" name="password" ngModel
+                 class="form-control p-2 bg-light border-end-0"
+                 placeholder="Min 6 characters" required minlength="6" #pass="ngModel">
+          <span class="input-group-text bg-light border-start-0" (click)="showPassword = !showPassword" style="cursor: pointer;">
+            <i [class]="showPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+          </span>
+        </div>
         <div *ngIf="pass.invalid && pass.touched" class="text-danger small">Password must be at least 6 chars.</div>
       </div>
 
+      <!-- Confirm Password -->
+      <div class="mb-3">
+        <label class="form-label small fw-bold">Confirm Password</label>
+        <div class="input-group">
+          <input [type]="showConfirmPassword ? 'text' : 'password'" name="confirmPassword" ngModel
+                 class="form-control p-2 bg-light border-end-0"
+                 placeholder="Repeat your password" required #confirmPass="ngModel">
+          <span class="input-group-text bg-light border-start-0" (click)="showConfirmPassword = !showConfirmPassword" style="cursor: pointer;">
+            <i [class]="showConfirmPassword ? 'bi bi-eye-slash' : 'bi bi-eye'"></i>
+          </span>
+        </div>
+        <div *ngIf="confirmPass.touched && regForm.value.password !== regForm.value.confirmPassword" class="text-danger small">
+          Passwords do not match.
+        </div>
+      </div>
+
+      <!-- Role Selection -->
       <div class="mb-4">
         <label class="form-label small fw-bold">Register As</label>
         <select name="role" ngModel class="form-select p-2 bg-light" required>
           <option value="" disabled selected>Select Role</option>
           <option value="Patient">Patient</option>
           <option value="Doctor">Doctor</option>
-          <option value="Manager">Manager</option>
+          <option value="Admin">Admin</option>
         </select>
       </div>
 
-      <button type="submit" [disabled]="regForm.invalid" class="btn btn-primary w-100 p-2 fw-bold shadow-sm"
+      <button type="submit" [disabled]="regForm.invalid || regForm.value.password !== regForm.value.confirmPassword"
+              class="btn btn-primary w-100 p-2 fw-bold shadow-sm"
               style="background-color: #3498db; border: none;">
         Register Now
       </button>

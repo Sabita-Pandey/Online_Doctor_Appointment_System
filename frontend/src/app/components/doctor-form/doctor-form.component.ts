@@ -24,27 +24,39 @@ export class DoctorFormComponent {
    department: 'OPD',
    availabilityStatus: 'Available',
    licenseNumber: '',
-   consultationFee: 500 // Number bhejein
+   consultationFee: 500, // Number bhejein
+   qrCodeUrl: ''
  };
 
   private dataService = inject(DataService);
   private router = inject(Router);
   private appointSrv = inject(AppointmentService);
 
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.doctorObj.qrCodeUrl = reader.result as string; // Base64 string save ho jayegi
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
   saveDoctorAndNext() {
-    console.log("Sending Doctor Data to DB:", this.doctorObj);
 
     this.appointSrv.addDoctor(this.doctorObj).subscribe({
       next: (res: any) => {
-        alert("Doctor Profile Saved Successfully in Database!");
-        this.router.navigate(['/booking']);
+        alert("Doctor Details Saved Successfully!");
+        // Ab hum direct 'booked' wale page par navigate karenge
+        this.router.navigate(['/booked']);
       },
-      error: (err) => {
-        console.error("Save failed", err);
-        alert("Database error! Check if Backend is running.");
+      error: (err: any) => {
+        console.error("Save error:", err);
+        alert("Details save karne mein error aaya!");
       }
     });
-  } // Is bracket ko check karein
+  }
 
   goBack() {
     this.router.navigate(['/patient-form']);

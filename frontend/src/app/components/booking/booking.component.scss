@@ -1,0 +1,15 @@
+.payment-box {
+  background-color: #f8f9fa;
+  animation: fadeIn 0.5s ease-in-out;
+
+  h5 {
+    color: #007bff;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

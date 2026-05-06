@@ -14,7 +14,16 @@
           <input type="text" [(ngModel)]="doctorObj.licenseNumber" name="licenseNumber" class="form-control" placeholder="e.g. MCI-12345">
         </div>
       </div>
-
+      <div class="row">
+      <div class="col-md-6">
+        <label class="fw-bold">Contact Number</label>
+        <input type="text" class="form-control" [(ngModel)]="doctorObj.contactNo" name="contactNo" placeholder="e.g. +91 9876543210">
+      </div>
+        <div class="col-md-6 mb-3">
+          <label class="fw-bold">Qualification</label>
+          <input type="text" [(ngModel)]="doctorObj.qualification" name="qualification" class="form-control" placeholder="e.g. MBBS, MD (Medicine)">
+        </div>
+      </div>
       <div class="row">
         <div class="col-md-6 mb-3">
           <label class="fw-bold">Specialization</label>
@@ -48,15 +57,10 @@
         </div>
       </div>
 
-      <div class="row">
-        <div class="col-md-12 mb-3">
-          <label class="fw-bold">Qualification</label>
-          <input type="text" [(ngModel)]="doctorObj.qualification" name="qualification" class="form-control" placeholder="e.g. MBBS, MD (Medicine)">
-        </div>
-      </div>
+
 
       <div class="row">
-        <div class="col-md-12 mb-4">
+        <div class="col-md-6 mb-4">
           <label class="fw-bold">Availability Status</label>
           <select class="form-select" [(ngModel)]="doctorObj.availabilityStatus" name="availabilityStatus">
             <option value="Available">Available</option>
@@ -64,14 +68,20 @@
             <option value="Not Available">Not Available</option>
           </select>
         </div>
+        <div class="col-md-6">
+          <label class="fw-bold">Upload QR Code</label>
+          <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*">
+        </div>
       </div>
+
+
 
       <div class="d-flex justify-content-between">
         <button type="button" class="btn btn-secondary px-4 py-2" (click)="goBack()">
           ⬅️ Back
         </button>
         <button type="button" class="btn btn-success px-4 py-2" (click)="saveDoctorAndNext()">
-          Save & Proceed to Booking ➡️
+          Save & View Booked Appointments ➡
         </button>
       </div>
     </form>

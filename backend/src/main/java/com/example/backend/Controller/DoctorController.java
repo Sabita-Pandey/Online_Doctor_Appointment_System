@@ -1,8 +1,7 @@
 package com.example.backend.Controller;
 
-import com.example.backend.Entity.Doctor; // 2. Model import
-
-import com.example.backend.Repository.DoctorRepository; // 3. Repo import
+import com.example.backend.Entity.Doctor;
+import com.example.backend.Repository.DoctorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,7 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/doctors")
-@CrossOrigin("*") // Sabse simple aur best tarika testing ke liye
+// REMOVE THIS: @CrossOrigin(originPatterns = "http://localhost:4200", allowCredentials = "true")
 public class DoctorController {
 
     @Autowired
@@ -26,5 +25,3 @@ public class DoctorController {
         return doctorRepository.save(doctor);
     }
 }
-
-

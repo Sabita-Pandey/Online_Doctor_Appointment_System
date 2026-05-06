@@ -81,18 +81,45 @@ export class DoctorAppointmentsComponent implements OnInit {
   }
 
   // 3. View Details Logic
-  viewPatientDetails(item: any) {
+// 3. View Details Logic (Updated with Day & Exact Booking Time)
+ viewPatientDetails(item: any) {
+   // Console log zaroor karein debug karne ke liye
+   console.log("Item data:", item);
+
+   // Check karein ki backend se key ka exact naam kya aa raha hai
+   const rawDate = item.bookingDateTime || item.booking_date_time;
+
+   let bookingInfo = 'N/A';
+
+   if (rawDate) {
+     const bookingDate = new Date(rawDate);
+     // Agar date valid hai
+     if (!isNaN(bookingDate.getTime())) {
+       const options: any = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+       const dayAndDate = bookingDate.toLocaleDateString('en-IN', options);
+       const time = bookingDate.toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit', hour12: true });
+       bookingInfo = `${dayAndDate} at ${time}`;
+     }
+   }
     const info = `
+      --- Appointment Info ---
       Patient Name: ${item.patientName || 'N/A'}
       Doctor: ${item.doctorName}
       Specialization: ${item.specialization || 'N/A'}
+
+      --- Booking Audit Details ---
+      Booked On (Day & Date): ${bookingInfo}
+
+      --- Contact Doctor ---
+          📞 Phone: ${item.doctorContact || 'Not Available'}
+
+      --- Other Details ---
       Fees: ₹${item.feesAmount || 0}
       Allergies: ${item.allergies || 'None'}
       Mode: ${item.locationType}
     `;
     alert(info);
   }
-
   // 4. Status Styling
   getStatusClass(status: string) {
     return {

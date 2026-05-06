@@ -7,13 +7,18 @@ import jakarta.persistence.*;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "user_id")
     private Long userId; // [cite: 4]
 
     private String name; // [cite: 5]
+    @Column(unique = true, nullable = false)
     private String email; // [cite: 6]
     private String password; // [cite: 8]
-    private String role; // Role: Patient, Doctor, Manager, Admin [cite: 9, 12]
+    private String role; // Role: Patient, Doctor, Admin [cite: 9, 12]
     private String status; // [cite: 11]
+    private String resetToken;
+
+
 
     public String getEmail() {
         return email;
@@ -63,6 +68,13 @@ public class User {
         this.userId = userId;
     }
 
-    public void setRegistrationDate(String string) {
+    public void setRegistrationDate(String string) { }
+
+    public String getResetToken() {
+        return resetToken;
+    }
+
+    public void setResetToken(String resetToken) {
+        this.resetToken = resetToken;
     }
 }

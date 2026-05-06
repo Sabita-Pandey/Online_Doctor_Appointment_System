@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/appointments") // Yeh path Angular service se match hona chahiye
-@CrossOrigin(origins = "*", allowedHeaders = "*") // CORS error se bachne ke liye zaroori hai
+//@CrossOrigin(origins = "*", allowedHeaders = "*") // CORS error se bachne ke liye zaroori hai
 public class AppointmentController {
 
     @Autowired

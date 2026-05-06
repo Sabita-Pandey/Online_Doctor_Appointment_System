@@ -38,9 +38,13 @@
           <td class="p-3">{{ appt.appointmentDate }} | {{ appt.timeSlot }}</td>
 
           <td class="p-3">
-      <span [ngClass]="getStatusClass(appt.status)" class="badge p-2">
-        {{ appt.status }}
-      </span>
+  <span [ngClass]="{
+    'badge bg-success p-2': appt.status === 'Confirmed',
+    'badge bg-warning text-dark p-2': appt.status === 'Pending',
+    'badge bg-danger p-2': appt.status === 'Cancelled'
+  }">
+    {{ appt.status }}
+  </span>
           </td>
 
           <td class="p-3 text-center">

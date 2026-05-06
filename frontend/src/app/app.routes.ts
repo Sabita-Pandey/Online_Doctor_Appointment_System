@@ -22,8 +22,8 @@ export const routes: Routes = [
   // Protected Routes (Sirf login ke baad dikhenge)
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'all-specialties', component: SpecialtyListComponent, canActivate: [authGuard] },
-  { path: 'patient-form', component: PatientFormComponent, canActivate: [authGuard] },
   { path: 'doctor-form', component: DoctorFormComponent, canActivate: [authGuard] },
+  { path: 'patient-form', component: PatientFormComponent, canActivate: [authGuard] },
   { path: 'booking', component: BookingComponent, canActivate: [authGuard] },
   { path: 'doctor-appointments', component: DoctorAppointmentsComponent, canActivate: [authGuard] },
   { path: 'history', component: HistoryComponent, canActivate: [authGuard] },
